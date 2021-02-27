@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import { Basket as BasketIcon } from '@styled-icons/ionicons-solid/Basket';
 import { Menu as MenuIcon } from '@styled-icons/ionicons-solid/Menu';
+import { Link } from 'react-router-dom';
 import Icon from './Icon';
 import Menu from './Menu';
 
@@ -16,7 +17,9 @@ export default function Navbar() {
     return (
         <NavContainer>
             <StyledMenuIcon size={40} onClick={() => setMenuOpen(true)} />
-            <StyledBasketIcon size={40}/>
+            <Link to='/basket'>
+                <StyledBasketIcon size={40}/>
+            </Link>
             <Menu isOpen={menuOpen} closeMenu={closeMenu}/>
         </NavContainer>
     )

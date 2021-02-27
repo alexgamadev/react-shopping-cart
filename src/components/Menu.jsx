@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {useSpring, animated, config} from 'react-spring';
 import { Link } from 'react-router-dom';
-
 import Icon from './Icon';
 import { Close as CloseIcon } from '@styled-icons/ionicons-solid/Close';
 
 export default function Menu(props) {
-    const { isOpen, closeMenu } = props;
+    const { isOpen, closeMenu, children } = props;
 
     //React-spring animation for menu open
     const openAnim = useSpring({
@@ -21,11 +20,12 @@ export default function Menu(props) {
                 <StyledCloseIcon size={40} onClick={() => closeMenu()}/>
                 <MenuLink to='/' onClick={() => closeMenu()}>Home</MenuLink>
                 <MenuLink to='/shop' onClick={() => closeMenu()}>Shop</MenuLink>
-                <MenuLink>About</MenuLink>
+                <MenuLink to='/about' onClick={() => closeMenu()}>About</MenuLink>
             </MenuList>
         </StyledMenu>
     )
 }
+
 
 const StyledMenu = styled(animated.div)`
     position: absolute;
