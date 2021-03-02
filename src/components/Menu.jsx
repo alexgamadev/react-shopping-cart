@@ -32,8 +32,8 @@ const StyledMenu = styled(animated.div)`
     top: 0px;
     left: 0px;
     height: 100vh;
-    width: 100vw;
-    background-color: #0f1520;
+    width: 80vw;
+    background-color: #122039;
 
     transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100vw)'};
 `;
@@ -61,7 +61,7 @@ const MenuLink = styled(Link)`
 
 const StyledCloseIcon = styled(CloseIcon)`
     ${Icon}
-    padding-left: 10px;
+    margin-left: 10px;
     &:hover, &:active {
         background-color: #182640;
     }

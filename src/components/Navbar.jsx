@@ -31,7 +31,7 @@ const NavContainer = styled.nav`
     align-items: center;
     gap: 1rem;
     padding: 0.5rem;
-    background-color: #212121;
+    background-color: #0f1520;
     overflow: hidden;
     height: 40px;
 `;
