@@ -1,35 +1,31 @@
-import React from 'react';
-import ShopCard from '../components/ShopCard';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-const ItemWrapper = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: center;
-    grid-gap: 20px;
-`;
+import ShopCard from '../components/ShopCard';
+import ResponsiveGrid from '../components/ResponsiveGrid';
 
 const StyledSection = styled.section`
     margin: 20px;
-`
+`;
 
 export default function Shop() {
+    const [shopItems, setShopItems] = useState([]);
+    
+    useEffect(() => {
+        setShopItems(["Hi", "Bye", "Eye", "Spy", "Shoop", "Hi", "Bye", "Eye", "Spy", "Hello", "Blem"]);   
+    }, []);
+
     return (
         <>
             <h1>
                 Shop
             </h1>
             <StyledSection>
-                <ItemWrapper>
-                    <ItemWrapper>
-                        <ShopCard />
-                        <ShopCard />
-                    </ItemWrapper>
-                    <ItemWrapper>
-                        <ShopCard />
-                        <ShopCard />
-                    </ItemWrapper>
-                </ItemWrapper>
+                {shopItems && 
+                    <ResponsiveGrid>
+                        {shopItems?.map(item => (<ShopCard />))}
+                    </ResponsiveGrid>                
+                }
+                
             </StyledSection>
         </>
     )
