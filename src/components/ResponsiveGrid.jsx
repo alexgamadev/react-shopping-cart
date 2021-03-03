@@ -1,8 +1,7 @@
 import React from 'react'
-import ShopCard from './ShopCard';
 import styled from 'styled-components';
 
-const ItemWrapper = styled.div`
+const GridWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
@@ -18,9 +17,9 @@ export default function ResponsiveGrid(props) {
     const { children } = props;
 
     return (
-        <ItemWrapper gutter="20px">
+        <GridWrapper gutter="20px">
                 {children}
-        </ItemWrapper>
+        </GridWrapper>
     );
 }
 

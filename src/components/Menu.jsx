@@ -62,6 +62,7 @@ const MenuLink = styled(Link)`
 const StyledCloseIcon = styled(CloseIcon)`
     ${Icon}
     margin-left: 10px;
+    color: #fff;
     &:hover, &:active {
         background-color: #182640;
     }
