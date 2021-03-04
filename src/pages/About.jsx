@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../components/Navbar';
 
 export default function About() {
     return (
-        <h1>
-            About
-        </h1>
+        <>
+            <Navbar pageTitle={"About"}/>
+        </>
     )
 }

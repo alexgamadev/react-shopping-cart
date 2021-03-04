@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import ShopCard from '../components/ShopCard';
 import ResponsiveGrid from '../components/ResponsiveGrid';
@@ -16,9 +17,7 @@ export default function Shop() {
 
     return (
         <>
-            <h1>
-                Shop
-            </h1>
+            <Navbar pageTitle={"Shop"}/>
             <StyledSection>
                 {shopItems && 
                     <ResponsiveGrid>

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../components/Navbar';
 
 export default function Basket() {
     return (
-        <h1>
-            Basket
-        </h1>
+        <>
+            <Navbar pageTitle={"Basket"}/>
+        </>
     )
 }

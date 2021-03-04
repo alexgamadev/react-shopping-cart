@@ -6,18 +6,18 @@ import Icon from './Icon';
 import { Close as CloseIcon } from '@styled-icons/ionicons-solid/Close';
 
 export default function Menu(props) {
-    const { isOpen, closeMenu, children } = props;
+    const { menuOpen, closeMenu } = props;
 
     //React-spring animation for menu open
     const openAnim = useSpring({
-        transform: isOpen ? `translateX(0)` : 'translateX(-100vw)',
+        transform: menuOpen ? `translateX(0)` : 'translateX(-100vw)',
         config: {...config.stiff, clamp: true}
     })
 
     return (
-        <StyledMenu isOpen={isOpen} style={openAnim}>
+        <StyledMenu $menuOpen={menuOpen} style={openAnim}>
             <MenuList>
-                <StyledCloseIcon size={40} onClick={() => closeMenu()}/>
+                <StyledCloseIcon size={35} onClick={() => closeMenu()}/>
                 <MenuLink to='/' onClick={() => closeMenu()}>Home</MenuLink>
                 <MenuLink to='/shop' onClick={() => closeMenu()}>Shop</MenuLink>
                 <MenuLink to='/about' onClick={() => closeMenu()}>About</MenuLink>
@@ -35,7 +35,7 @@ const StyledMenu = styled(animated.div)`
     width: 80vw;
     background-color: #122039;
 
-    transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(-100vw)'};
+    transform: ${props => props.$menuOpen ? 'translateX(0)' : 'translateX(-100vw)'};
 `;
 
 const MenuList = styled.div`
@@ -49,7 +49,7 @@ const MenuLink = styled(Link)`
     color: white;
     text-decoration: none;
     padding: 20px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     user-select: none;
 

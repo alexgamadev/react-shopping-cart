@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { ShoppingBasket as BasketIcon } from '@styled-icons/material-outlined/ShoppingBasket';
+import { Basket as BasketIcon } from '@styled-icons/ionicons-outline/Basket';
 import { MenuAltLeft as MenuIcon } from '@styled-icons/boxicons-regular/MenuAltLeft';
 import { Link } from 'react-router-dom';
 import Icon from './Icon';
 import Menu from './Menu';
 
-export default function Navbar() {
+export default function Navbar(props) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const { pageTitle } = props;
 
     function closeMenu() {
         setMenuOpen(false);
     }
 
-    console.log(menuOpen);
     return (
         <NavContainer>
-            <StyledMenuIcon size={40} onClick={() => setMenuOpen(true)} />
+            <StyledMenuIcon size={35} onClick={() => setMenuOpen(true)} />
+            <StyledTitle>{pageTitle}</StyledTitle>
             <Link to='/basket'>
-                <StyledBasketIcon size={40}/>
+                <StyledBasketIcon size={35}/>
             </Link>
             <Menu menuOpen={menuOpen} closeMenu={closeMenu}/>
         </NavContainer>
@@ -34,6 +35,10 @@ const NavContainer = styled.nav`
     background-color: #fff;
     overflow: hidden;
     height: 40px;
+`;
+
+const StyledTitle = styled.h1`
+	font-weight: 500;
 `;
 
 const StyledMenuIcon = styled(MenuIcon)`
