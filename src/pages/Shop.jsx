@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
-import ShopCard from '../components/ShopCard';
+import Card from '../components/Card';
 import ResponsiveGrid from '../components/ResponsiveGrid';
 
 const StyledSection = styled.section`
@@ -21,7 +21,7 @@ export default function Shop() {
             <StyledSection>
                 {shopItems && 
                     <ResponsiveGrid>
-                        {shopItems?.map(item => (<ShopCard />))}
+                        {shopItems?.map(item => (<Card />))}
                     </ResponsiveGrid>                
                 }
                 

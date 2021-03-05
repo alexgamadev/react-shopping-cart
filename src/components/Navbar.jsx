@@ -38,7 +38,8 @@ const NavContainer = styled.nav`
 `;
 
 const StyledTitle = styled.h1`
-	font-weight: 500;
+	font-weight: 600;
+    color: #121212;
 `;
 
 const StyledMenuIcon = styled(MenuIcon)`
