@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
-import Card from '../components/Card';
+import ShopCard from '../components/ShopCard';
 import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
 
@@ -10,15 +10,7 @@ const StyledSection = styled.section`
 `;
 
 export default function Shop() {
-    const [shopItems, setShopItems] = useState([]);
     const [data, isProcessing, error] = useFetchAPI('https://fakestoreapi.com/products');
-
-    console.log(data);
-    console.log(isProcessing);
-
-    useEffect(() => {
-        setShopItems(["Hi", "Bye", "Eye", "Spy", "Shoop", "Hi", "Bye", "Eye", "Spy", "Hello", "Blem"]);   
-    }, []);
 
     return (
         <>
@@ -26,7 +18,7 @@ export default function Shop() {
             <StyledSection>
                 {data && 
                     <ResponsiveGrid>
-                        {shopItems?.map(item => (<Card />))}
+                        {data?.map((item) => (<ShopCard key={item.id} data={item} />))}
                     </ResponsiveGrid>                
                 }
                 

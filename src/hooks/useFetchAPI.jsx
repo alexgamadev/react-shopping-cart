@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function useFetchAPI(url) {
-    const [data, setData] = useState({});
+    const [data, setData] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState('');
 
