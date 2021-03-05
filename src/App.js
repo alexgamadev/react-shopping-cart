@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-    BrowserRouter as Router,
     Switch,
     Route
   } from "react-router-dom";
@@ -11,21 +10,19 @@ import Basket from './pages/Basket';
 
 export default function App() {
     return (
-        <Router>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/shop">
-                    <Shop />
-                </Route>
-                <Route path="/about">
-                    <About />
-                </Route>
-                <Route path="/basket">
-                    <Basket />
-                </Route>
-            </Switch>
-        </Router>
+        <Switch>
+            <Route exact path="/">
+                <Home />
+            </Route>
+            <Route path="/shop">
+                <Shop />
+            </Route>
+            <Route path="/about">
+                <About />
+            </Route>
+            <Route path="/basket">
+                <Basket />
+            </Route>
+        </Switch>
     )
 }
