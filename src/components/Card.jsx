@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function Card() {
+export default function Card(props) {
+    const {children} = props;
     return (
         <CardContainer radius={10}>
-            <CardImage/>
-            <StyledDetails>
-                I am a card
-            </StyledDetails> 
+            {children}
         </CardContainer>
     );
 }
@@ -18,9 +16,12 @@ export function CardImage() {
     );
 }
 
-export function CardDetails() {
+export function CardDetails(props) {
+    const {children} = props;
     return (
-        <StyledDetails/>
+        <StyledDetails>
+            {children}
+        </ StyledDetails>
     );
 }
 
@@ -37,6 +38,7 @@ const CardContainer = styled.div`
 
 const StyledImage = styled.img`
     width: 33%;
+    flex-shrink: 0;
     margin: 10px;
     background: #eee;
     border: none;
@@ -44,4 +46,5 @@ const StyledImage = styled.img`
 
 const StyledDetails = styled.div`
     margin: 10px 0px;
+    font-size: 12px;
 `;
