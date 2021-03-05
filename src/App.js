@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+    HashRouter as Router,
     Switch,
     Route
   } from "react-router-dom";
@@ -10,19 +11,21 @@ import Basket from './pages/Basket';
 
 export default function App() {
     return (
-        <Switch>
-            <Route exact path="/">
-                <Home />
-            </Route>
-            <Route path="/shop">
-                <Shop />
-            </Route>
-            <Route path="/about">
-                <About />
-            </Route>
-            <Route path="/basket">
-                <Basket />
-            </Route>
-        </Switch>
+        <Router basename='/'>
+            <Switch>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route path="/shop">
+                    <Shop />
+                </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
+                <Route path="/basket">
+                    <Basket />
+                </Route>
+            </Switch>
+        </Router>
     )
 }
