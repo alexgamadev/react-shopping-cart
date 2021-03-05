@@ -5,14 +5,16 @@ export default function Card() {
     return (
         <CardContainer radius={10}>
             <CardImage/>
-            I am a card 
+            <StyledDetails>
+                I am a card
+            </StyledDetails> 
         </CardContainer>
     );
 }
 
 export function CardImage() {
     return (
-        <StyledImage/>
+        <StyledImage src={"https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340"}/>
     );
 }
 
@@ -35,8 +37,11 @@ const CardContainer = styled.div`
 
 const StyledImage = styled.img`
     width: 33%;
+    margin: 10px;
+    background: #eee;
+    border: none;
 `;
 
 const StyledDetails = styled.div`
-    
+    margin: 10px 0px;
 `;
