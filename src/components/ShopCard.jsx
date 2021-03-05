@@ -1,5 +1,5 @@
 import React from 'react';
-import Card, {CardDetails, CardImage} from '../components/Card';
+import Card, {CardDetails, CardImage, CardMedia, CardTitle} from '../components/Card';
 
 export default function ShopCard(props) {
     const { data } = props;
@@ -7,9 +7,11 @@ export default function ShopCard(props) {
 
     return (
         <Card>
-            <CardImage/>
+            <CardMedia>
+                <CardImage imageSrc={data.image}/>
+            </CardMedia>
             <CardDetails>
-                {data.title}
+                <CardTitle text={data.title} maxLines={2} />
             </CardDetails> 
         </Card>
     )

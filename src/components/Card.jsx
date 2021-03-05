@@ -10,18 +10,37 @@ export default function Card(props) {
     );
 }
 
-export function CardImage() {
+export function CardMedia(props) {
+    const {children} = props;
     return (
-        <StyledImage src={"https://media.macphun.com/img/uploads/customer/how-to/579/15531840725c93b5489d84e9.43781620.jpg?q=85&w=1340"}/>
+        <StyledMedia>
+            {children}
+        </StyledMedia>
+    );
+}
+
+export function CardImage(props) {
+    const {imageSrc} = props;
+    return (
+        <StyledImage src={imageSrc}/>
     );
 }
 
 export function CardDetails(props) {
     const {children} = props;
     return (
-        <StyledDetails>
-            {children}
+        <StyledDetails maxLines={2}>
+            {children}    
         </ StyledDetails>
+    );
+}
+
+export function CardTitle(props) {
+    const {text, maxLines} = props;
+    return (
+        <StyledTitle maxLines={maxLines}>
+            {text}
+        </StyledTitle>
     );
 }
 
@@ -34,17 +53,43 @@ const CardContainer = styled.div`
     height: 150px;
     box-shadow: 0px 5px 10px -1px #999;
     border-radius: ${props => props.radius}px;
+    overflow: hidden;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 const StyledImage = styled.img`
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+    mix-blend-mode: multiply;
+`;
+
+const StyledMedia = styled.div`
+    display: flex;
+    align-content: center;
     width: 33%;
+    padding: 10px;
     flex-shrink: 0;
-    margin: 10px;
-    background: #eee;
-    border: none;
+    background-color: #eee;
 `;
 
 const StyledDetails = styled.div`
-    margin: 10px 0px;
-    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+`;
+
+const StyledTitle = styled.h2`
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: ${props => props.maxLines ?? 'none'};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    color: #212121;
 `;
