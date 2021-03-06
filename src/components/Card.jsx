@@ -51,7 +51,7 @@ const CardContainer = styled.div`
     max-width: 600px;
     min-width: 300px;
     height: 150px;
-    box-shadow: 0px 5px 10px -1px #999;
+    box-shadow: 0px 2px 5px -1px #ccc;
     border-radius: ${props => props.radius}px;
     overflow: hidden;
 
@@ -64,22 +64,24 @@ const StyledImage = styled.img`
     object-fit: contain;
     max-width: 100%;
     max-height: 100%;
-    mix-blend-mode: multiply;
 `;
 
 const StyledMedia = styled.div`
     display: flex;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
     width: 33%;
     padding: 10px;
     flex-shrink: 0;
-    background-color: #eee;
+    border-right: 1px solid #eee;
 `;
 
 const StyledDetails = styled.div`
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     padding: 10px 5px;
+    background-color: #fafafa;
 `;
 
 const StyledTitle = styled.h2`
