@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function Card(props) {
     const {children} = props;
     return (
-        <CardContainer radius={10}>
+        <CardContainer radius={0}>
             {children}
         </CardContainer>
     );
@@ -54,10 +54,6 @@ const CardContainer = styled.div`
     box-shadow: 0px 2px 5px -1px #ccc;
     border-radius: ${props => props.radius}px;
     overflow: hidden;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
 
 const StyledImage = styled.img`
