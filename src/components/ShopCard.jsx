@@ -15,7 +15,7 @@ export default function ShopCard(props) {
                 <CardTitle text={data.title} maxLines={2} />
                 <StyledDescription>{data.category}</StyledDescription>
                 <StyledActions>
-                    <StyledPrice>{`£${data.price}`}</StyledPrice>
+                    <StyledPrice>{`£${data.price.toFixed(2)}`}</StyledPrice>
                     <BasketButton>Add To Basket</BasketButton>
                 </StyledActions>
             </CardDetails> 

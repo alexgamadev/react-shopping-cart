@@ -17,7 +17,7 @@ export default function Menu(props) {
     return (
         <StyledMenu $menuOpen={menuOpen} style={openAnim}>
             <MenuList>
-                <StyledCloseIcon size={35} onClick={() => closeMenu()}/>
+                <StyledCloseIcon size={40} onClick={() => closeMenu()}/>
                 <MenuLink to='/' onClick={() => closeMenu()}>Home</MenuLink>
                 <MenuLink to='/shop' onClick={() => closeMenu()}>Shop</MenuLink>
                 <MenuLink to='/about' onClick={() => closeMenu()}>About</MenuLink>

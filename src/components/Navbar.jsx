@@ -16,10 +16,10 @@ export default function Navbar(props) {
 
     return (
         <NavContainer>
-            <StyledMenuIcon size={48} role={"img"} onClick={() => setMenuOpen(true)} />
+            <StyledMenuIcon size={40} role={"img"} onClick={() => setMenuOpen(true)} />
             <StyledTitle>{pageTitle}</StyledTitle>
             <Link to='/basket'>
-                <StyledBasketIcon size={48} role={"img"}/>
+                <StyledBasketIcon size={40} role={"img"}/>
             </Link>
             <Menu menuOpen={menuOpen} closeMenu={closeMenu}/>
         </NavContainer>
@@ -39,7 +39,7 @@ const NavContainer = styled.nav`
 
 const StyledTitle = styled.h1`
 	font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
     color: #121212;
 `;
 
