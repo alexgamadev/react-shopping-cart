@@ -4,7 +4,6 @@ import Card, {CardDetails, CardImage, CardMedia, CardTitle} from '../components/
 
 export default function ShopCard(props) {
     const { data } = props;
-    console.log(data);
 
     return (
         <Card>
@@ -24,7 +23,7 @@ export default function ShopCard(props) {
 }
 
 const StyledDescription = styled.div`
-    color: #242424;
+    color: ${props => props.theme?.textLighter};
     text-transform: capitalize;
     font-size: 14px;
 `;
@@ -35,13 +34,13 @@ const StyledActions = styled.div`
 `;
 
 const StyledPrice = styled.div`
-    color: #242424;
+color: ${props => props.theme?.textLighter};
     font-size: 24px;
     font-weight: 300;
 `;
 
 const BasketButton = styled.button`
-    background-color: #4ed54e;
+    background-color: ${props => props.theme?.success};
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;

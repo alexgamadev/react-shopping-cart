@@ -33,8 +33,7 @@ const StyledMenu = styled(animated.div)`
     left: 0px;
     height: 100vh;
     width: 80vw;
-    background-color: #122039;
-
+    background-color: ${props => props.theme.primary};
     transform: ${props => props.$menuOpen ? 'translateX(0)' : 'translateX(-100vw)'};
 `;
 
@@ -46,7 +45,7 @@ const MenuList = styled.div`
 `;
 
 const MenuLink = styled(Link)`
-    color: white;
+    color: ${props => props.theme.background};
     text-decoration: none;
     padding: 20px;
     font-size: 25px;
@@ -55,15 +54,15 @@ const MenuLink = styled(Link)`
 
     &:hover, &:active {
         cursor: pointer;
-        background-color: #182640;
+        background-color: ${props => props.theme.primaryLighter};
     }
 `;
 
 const StyledCloseIcon = styled(CloseIcon)`
     ${Icon}
     margin-left: 10px;
-    color: #fff;
+    color: ${props => props.theme.background};
     &:hover, &:active {
-        background-color: #182640;
+        background-color: ${props => props.theme.primaryLighter};
     }
 `;

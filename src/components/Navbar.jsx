@@ -32,7 +32,7 @@ const NavContainer = styled.nav`
     align-items: center;
     gap: 1rem;
     padding: 0.5rem;
-    background-color: #fff;
+    background-color: ${props => props.theme.background};
     overflow: hidden;
     height: 40px;
 `;
@@ -40,13 +40,23 @@ const NavContainer = styled.nav`
 const StyledTitle = styled.h1`
 	font-weight: 600;
     font-size: 30px;
-    color: #121212;
+    color: ${props => props.theme.text};
 `;
 
 const StyledMenuIcon = styled(MenuIcon)`
     ${Icon}
+    color: ${props => props.theme.text};
+
+    &:active, &:hover {
+        background-color: ${props => props.theme.backgroundLighter};
+    };
 `;
 
 const StyledBasketIcon = styled(BasketIcon)`
     ${Icon}
+    color: ${props => props.theme.text};
+    
+    &:active, &:hover {
+        background-color: ${props => props.theme.backgroundLighter};
+    }
 `;
