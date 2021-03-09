@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {
     HashRouter as Router,
     Switch,
@@ -15,8 +15,9 @@ import {createGlobalStyle} from 'styled-components';
 const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
   }
-`
+`;
 
 export default function App() {
     return (

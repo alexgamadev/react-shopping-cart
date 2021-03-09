@@ -11,7 +11,7 @@ const StyledSection = styled.section`
 `;
 
 export default function Shop() {
-    const [data, isProcessing, error] = useFetchAPI('https://fakestoreapi.com/products');
+    const [data] = useFetchAPI('https://fakestoreapi.com/products');
 
     return (
         <>
