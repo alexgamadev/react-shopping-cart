@@ -23,7 +23,7 @@ const themes = {
         primary: '#1e4f80',
         primaryLighter: '#34608c',
         shadow: 'black',
-        success: '#6be858',
+        success: '#186a0b',
     },
 }
 

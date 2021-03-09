@@ -46,7 +46,8 @@ export default function Basket() {
                         return <BasketItem>{item.name} - £{item.price} x {item.quantity} = £{item.price * item.quantity}</BasketItem>
                     })}
                 </BasketList>
-                <OrderTotal>Total: £{orderTotal(basketMock.items).toFixed(2)}</OrderTotal>
+                <OrderTotal>Order Total: £{orderTotal(basketMock.items).toFixed(2)}</OrderTotal>
+                <BuyButton>Pay Now</BuyButton>
             </Wrapper>
         </>
     )
@@ -65,6 +66,7 @@ const BasketList = styled.ul`
     flex-direction: column;
     width: 100%;
     list-style: none;
+    margin-top: 40px;
     padding: 0;
     text-align: center;
 `;
@@ -82,5 +84,17 @@ const BasketItem = styled.li`
 
 const OrderTotal = styled.h2`
     font-weight: 400;
+`;
+
+const BuyButton = styled.a`
+    background-color: ${props => props.theme.success};
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 40px;
+
+    &:hover, :active {
+        cursor: pointer;
+    }
 `;
 
