@@ -55,25 +55,32 @@ export default function Basket() {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    
-    height: auto;
-    width: 100%;
+    flex-grow: 1;
 `;
 
 const BasketList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     list-style: none;
     padding: 0;
-    margin-left: 20px;
+    text-align: center;
 `;
 
 const BasketItem = styled.li`
-
+    width: 100%;
+    padding: 15px 5px;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: ${props => props.theme.backgroundLighter};
+    &:not(:last-child) {
+        border-bottom: 1px solid ${props => props.theme.background};
+    }
 `;
 
 const OrderTotal = styled.h2`
-    margin-left: 20px;
     font-weight: 400;
 `;
 
