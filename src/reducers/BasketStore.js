@@ -4,6 +4,7 @@ function basketReducer(basket, action) {
     switch(action.type) {
         case 'addToBasket':
             return { ...action.payload.item};
+        default: return basket;
     }
 }
 
