@@ -7,53 +7,32 @@ const orderTotal = (items) => {
     return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
 }
 
-const basketMock = {
-    items: [
-        {
-            id: 0,
-            name: 'Shoes',
-            price: 18.99,
-            quantity: 1,
-        },
-        {
-            id: 1,
-            name: 'Hat',
-            price: 24.99,
-            quantity: 2,
-        }, 
-        {
-            id: 2,
-            name: 'Coat',
-            price: 97.99,
-            quantity: 4,
-        }, 
-        {
-            id: 3,
-            name: 'Socks',
-            price: 0.69,
-            quantity: 3,
-        },   
-    ]
-}
-
 const Pay = total => {
     alert(`Paid £${total} for items`);
 }
 
 export default function Basket() {
     const [basket] = useContext(BasketContext);
-    const totalPrice = orderTotal([basket]).toFixed(2);
+    const totalPrice = orderTotal(basket).toFixed(2);
+    console.log(basket);
     
     return (
         <>
             <Navbar pageTitle={"Basket"}/>
             <Wrapper>
-                <BasketList>
-                    <BasketItem>{basket.title} - £{basket.price} x {basket.quantity} = £{basket.price * basket.quantity}</BasketItem>
-                </BasketList>
-                <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
-                <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
+            {basket.length > 0 ? (
+                <>
+                    <BasketList>
+                        {basket.map(item => <BasketItem>{item.title} - £{item.price.toFixed(2)} x {item.quantity} = £{(item.price * item.quantity).toFixed(2)}</BasketItem>)}
+                    </BasketList>
+                    <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
+                    <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
+                </>
+            ) : (
+                <h2>Basket empty</h2>
+            )}
             </Wrapper>
+            
         </>
     )
 }
@@ -69,7 +48,8 @@ const Wrapper = styled.div`
 const BasketList = styled.ul`
     display: flex;
     flex-direction: column;
-    width: 60%;
+    max-width: 90%;
+    min-width: 60%;
     list-style: none;
     margin-top: 40px;
     padding: 0;
