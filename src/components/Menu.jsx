@@ -45,7 +45,7 @@ const MenuList = styled.div`
 `;
 
 const MenuLink = styled(Link)`
-    color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     text-decoration: none;
     padding: 20px;
     font-size: 25px;
@@ -61,7 +61,7 @@ const MenuLink = styled(Link)`
 const StyledCloseIcon = styled(CloseIcon)`
     ${Icon}
     margin-left: 10px;
-    color: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     &:hover, &:active {
         background-color: ${props => props.theme.primaryLighter};
     }
