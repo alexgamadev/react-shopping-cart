@@ -3,19 +3,19 @@ import styled from 'styled-components';
 import Card, {CardDetails, CardImage, CardMedia, CardTitle} from '../components/Card';
 
 export default function ShopCard(props) {
-    const { data } = props;
+    const { item, addToBasket } = props;
 
     return (
         <Card>
             <CardMedia>
-                <CardImage imageSrc={data.image}/>
+                <CardImage imageSrc={item.image}/>
             </CardMedia>
             <CardDetails>
-                <CardTitle text={data.title} maxLines={2} />
-                <StyledDescription>{data.category}</StyledDescription>
+                <CardTitle text={item.title} maxLines={2} />
+                <StyledDescription>{item.category}</StyledDescription>
                 <StyledActions>
-                    <StyledPrice>{`£${data.price.toFixed(2)}`}</StyledPrice>
-                    <BasketButton>Add To Basket</BasketButton>
+                    <StyledPrice>{`£${item.price.toFixed(2)}`}</StyledPrice>
+                    <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
                 </StyledActions>
             </CardDetails> 
         </Card>
