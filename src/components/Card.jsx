@@ -37,7 +37,6 @@ export function CardDetails(props) {
 
 export function CardTitle(props) {
     const {text, maxLines, theme} = props;
-    console.log(theme);
     return (
         <StyledTitle theme={theme} maxLines={maxLines}>
             {text}
