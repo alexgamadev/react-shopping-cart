@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
+import { BasketContext } from '../reducers/BasketStore'
 
 const orderTotal = (items) => {
     return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
@@ -40,15 +41,15 @@ const Pay = total => {
 }
 
 export default function Basket() {
-    const totalPrice = orderTotal(basketMock.items).toFixed(2);
+    const [basket] = useContext(BasketContext);
+    const totalPrice = orderTotal([basket]).toFixed(2);
+    
     return (
         <>
             <Navbar pageTitle={"Basket"}/>
             <Wrapper>
                 <BasketList>
-                    {basketMock.items.map(item => {
-                        return <BasketItem>{item.name} - £{item.price} x {item.quantity} = £{item.price * item.quantity}</BasketItem>
-                    })}
+                    <BasketItem>{basket.title} - £{basket.price} x {basket.quantity} = £{basket.price * basket.quantity}</BasketItem>
                 </BasketList>
                 <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
                 <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
