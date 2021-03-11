@@ -16,6 +16,7 @@ export default function Shop() {
     const [basket, dispatch] = useContext(BasketContext);
 
     function addToBasket(item) {
+        item.quantity = 1;
         console.log(basket)
         dispatch({type: 'addToBasket', payload: {item: item}})
         window.localStorage.setItem('basket', JSON.stringify(item));
