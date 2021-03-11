@@ -3,7 +3,14 @@ import React, { useReducer } from "react"
 function basketReducer(basket, action) {
     switch(action.type) {
         case 'addToBasket':
-            return { ...action.payload.item};
+            const {item} = action.payload;
+            if(basket.title === item.title) {
+                basket.quantity += 1;
+                return { ...basket};
+            } else {
+                return { ...item};
+            }
+            
         default: return basket;
     }
 }
