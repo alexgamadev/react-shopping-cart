@@ -1,22 +1,29 @@
 import React, { useReducer } from "react"
 
 function basketReducer(basket, action) {
+    const {payload} = action;
     switch(action.type) {
         case 'addToBasket':
-            const {item} = action.payload;
-            if(basket.title === item.title) {
-                basket.quantity += 1;
-                return { ...basket};
-            } else {
-                return { ...item};
-            }
+            return addToBasket(basket, payload.item);
             
         default: return basket;
     }
 }
 
+function addToBasket(basket, newItem) {
+    const itemIndex = basket.findIndex(item => item.id === newItem.id);
+    console.log(itemIndex);
+    if(itemIndex > -1) {
+        basket[itemIndex].quantity++;
+        return basket;
+    } else {
+        newItem.quantity = 1;
+        return [...basket, newItem]; 
+    }
+}
+
 export default function BasketStore({children}) {
-    const [basket, dispatch] = useReducer(basketReducer, {});
+    const [basket, dispatch] = useReducer(basketReducer, []);
 
     return (
         <BasketContext.Provider value={[basket, dispatch]}>
@@ -25,4 +32,4 @@ export default function BasketStore({children}) {
     );
 }
 
-export const BasketContext = React.createContext({});
+export const BasketContext = React.createContext([]);
