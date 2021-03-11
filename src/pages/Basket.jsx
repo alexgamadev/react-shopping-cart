@@ -35,8 +35,12 @@ const basketMock = {
     ]
 }
 
+const Pay = total => {
+    alert(`Paid £${total} for items`);
+}
+
 export default function Basket() {
-    console.log(orderTotal(basketMock.items));
+    const totalPrice = orderTotal(basketMock.items).toFixed(2);
     return (
         <>
             <Navbar pageTitle={"Basket"}/>
@@ -46,8 +50,8 @@ export default function Basket() {
                         return <BasketItem>{item.name} - £{item.price} x {item.quantity} = £{item.price * item.quantity}</BasketItem>
                     })}
                 </BasketList>
-                <OrderTotal>Order Total: £{orderTotal(basketMock.items).toFixed(2)}</OrderTotal>
-                <BuyButton>Pay Now</BuyButton>
+                <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
+                <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
             </Wrapper>
         </>
     )
@@ -64,7 +68,7 @@ const Wrapper = styled.div`
 const BasketList = styled.ul`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 60%;
     list-style: none;
     margin-top: 40px;
     padding: 0;
