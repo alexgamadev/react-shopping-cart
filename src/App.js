@@ -11,6 +11,7 @@ import Basket from './pages/Basket';
 import Theme from './context/Theme';
 import themes from './themes';
 import {createGlobalStyle} from 'styled-components';
+import BasketStore from './reducers/BasketStore';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -20,25 +21,28 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export default function App() {
+    
     return (
-        <Theme value={themes['dark']}>
-            <GlobalStyles />
-            <Router basename='/'>
-                <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
-                    <Route path="/shop">
-                        <Shop />
-                    </Route>
-                    <Route path="/about">
-                        <About />
-                    </Route>
-                    <Route path="/basket">
-                        <Basket />
-                    </Route>
-                </Switch>
-            </Router>
-        </Theme>
+        <BasketStore>
+            <Theme value={themes['light']}>
+                <GlobalStyles />
+                <Router basename='/'>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/shop">
+                            <Shop />
+                        </Route>
+                        <Route path="/about">
+                            <About />
+                        </Route>
+                        <Route path="/basket">
+                            <Basket />
+                        </Route>
+                    </Switch>
+                </Router>
+            </Theme>
+        </BasketStore> 
     )
 }
