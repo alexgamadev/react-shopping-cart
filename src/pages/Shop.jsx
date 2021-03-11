@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import ShopCard from '../components/ShopCard';
 import Spinner from '../components/Spinner';
 import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
+import { BasketContext } from '../reducers/BasketStore'
 
 const StyledSection = styled.section`
     margin: 20px;
@@ -12,6 +13,13 @@ const StyledSection = styled.section`
 
 export default function Shop() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products');
+    const [basket, dispatch] = useContext(BasketContext);
+
+    function addToBasket(item) {
+        console.log(basket)
+        dispatch({type: 'addToBasket', payload: {item: item}})
+        window.localStorage.setItem('basket', JSON.stringify(item));
+    }
 
     return (
         <>
@@ -21,7 +29,7 @@ export default function Shop() {
                 <StyledSection>
                     {data && 
                         <ResponsiveGrid>
-                            {data?.map((item) => (<ShopCard key={item.id} data={item} />))}
+                            {data?.map((item) => (<ShopCard key={item.id} item={item} addToBasket={addToBasket}/>))}
                         </ResponsiveGrid>                
                     }   
                 </StyledSection>
