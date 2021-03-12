@@ -6,6 +6,7 @@ import Spinner from '../components/Spinner';
 import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
 import { BasketContext } from '../reducers/BasketStore'
+import NotyfContext from '../context/NotyfContext';
 
 const StyledSection = styled.section`
     margin: 20px;
@@ -14,10 +15,12 @@ const StyledSection = styled.section`
 export default function Shop() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products');
     const [basket, dispatch] = useContext(BasketContext);
+    const notyf = useContext(NotyfContext);
 
     function addToBasket(item) {
         dispatch({type: 'addToBasket', payload: {item: item}})
         window.localStorage.setItem('basket', JSON.stringify(item));
+        notyf.success('Added to basket!');
     }
 
     return (
