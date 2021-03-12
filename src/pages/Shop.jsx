@@ -14,11 +14,12 @@ const StyledSection = styled.section`
 
 export default function Shop() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products');
+    // eslint-disable-next-line
     const [basket, dispatch] = useContext(BasketContext);
     const notyf = useContext(NotyfContext);
 
     function addToBasket(item) {
-        dispatch({type: 'addToBasket', payload: {item: item}})
+        dispatch({type: 'add-to-basket', payload: {item: item}})
         window.localStorage.setItem('basket', JSON.stringify(item));
         notyf.success('Added to basket!');
     }
@@ -31,7 +32,11 @@ export default function Shop() {
                 <StyledSection>
                     {data && 
                         <ResponsiveGrid>
-                            {data?.map((item) => (<ShopCard key={item.id} item={item} addToBasket={addToBasket}/>))}
+                            {data?.map((item) => {
+                                return (<ShopCard key={item.id} item={item}>
+                                    <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
+                                    </ShopCard>
+                            )})}
                         </ResponsiveGrid>                
                     }   
                 </StyledSection>
@@ -42,3 +47,22 @@ export default function Shop() {
         </>
     )
 }
+
+const BasketButton = styled.button`
+    background-color: ${props => props.theme?.success};
+    color: ${props => props.theme?.textLighter};
+    border: none;
+    margin:
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0px;
+    border-radius: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
+    &:active {
+        cursor: pointer;
+        background-color: ${props => `${props.theme?.success}88`};
+    }
+`;
