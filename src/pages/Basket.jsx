@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import { BasketContext } from '../reducers/BasketStore';
 import ShopCard from '../components/ShopCard';
+import QuantityDisplay from '../components/QuantityDisplay';
 
 const orderTotal = (items) => {
     return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
@@ -24,7 +25,12 @@ export default function Basket() {
             {basket.length > 0 ? (
                 <>
                     <BasketList>
-                        {basket.map(item => <ShopCard key={item.id} item={item}></ShopCard>)}
+                        {basket.map(item => {
+                            return (
+                            <ShopCard key={item.id} item={item}>
+                                <QuantityDisplay quantity={item.quantity} id={item.id}/>
+                            </ShopCard>
+                        )})}
                     </BasketList>
                     <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
                     <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
@@ -48,6 +54,7 @@ const Wrapper = styled.div`
 
 const BasketList = styled.ul`
     display: flex;
+    gap: 10px;
     flex-direction: column;
     max-width: 90%;
     min-width: 60%;
@@ -55,17 +62,6 @@ const BasketList = styled.ul`
     margin-top: 40px;
     padding: 0;
     text-align: center;
-`;
-
-const BasketItem = styled.li`
-    width: 100%;
-    padding: 15px 5px;
-    font-size: 18px;
-    font-weight: 400;
-    background-color: ${props => props.theme.backgroundLighter};
-    &:not(:last-child) {
-        border-bottom: 1px solid ${props => props.theme.background};
-    }
 `;
 
 const OrderTotal = styled.h2`
