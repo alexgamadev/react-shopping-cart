@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
-import { BasketContext } from '../reducers/BasketStore'
+import { BasketContext } from '../reducers/BasketStore';
+import ShopCard from '../components/ShopCard';
 
 const orderTotal = (items) => {
     return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
@@ -23,7 +24,7 @@ export default function Basket() {
             {basket.length > 0 ? (
                 <>
                     <BasketList>
-                        {basket.map(item => <BasketItem>{item.title} - £{item.price.toFixed(2)} x {item.quantity} = £{(item.price * item.quantity).toFixed(2)}</BasketItem>)}
+                        {basket.map(item => <ShopCard key={item.id} item={item}></ShopCard>)}
                     </BasketList>
                     <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
                     <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
