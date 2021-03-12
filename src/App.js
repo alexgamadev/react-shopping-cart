@@ -12,6 +12,7 @@ import Theme from './context/Theme';
 import themes from './themes';
 import {createGlobalStyle} from 'styled-components';
 import BasketStore from './reducers/BasketStore';
+import 'notyf/notyf.min.css';
 
 const GlobalStyles = createGlobalStyle`
   body {
