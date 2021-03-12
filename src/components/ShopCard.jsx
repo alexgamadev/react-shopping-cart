@@ -29,6 +29,7 @@ const StyledDescription = styled.div`
 `;
 const StyledActions = styled.div`
     display: flex;
+    gap: 30px;
     justify-content: space-between;
     margin-top: auto;
 `;
@@ -41,10 +42,13 @@ color: ${props => props.theme?.textLighter};
 
 const BasketButton = styled.button`
     background-color: ${props => props.theme?.success};
+    color: ${props => props.theme?.textLighter};
     border: none;
+    margin:
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
+    border-radius: 5px;
 
     &:hover {
         cursor: pointer;
