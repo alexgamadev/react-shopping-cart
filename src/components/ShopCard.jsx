@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card, {CardDetails, CardImage, CardMedia, CardTitle} from '../components/Card';
 
 export default function ShopCard(props) {
-    const { item, addToBasket } = props;
+    const { item, children } = props;
 
     return (
         <Card>
@@ -15,7 +15,7 @@ export default function ShopCard(props) {
                 <StyledDescription>{item.category}</StyledDescription>
                 <StyledActions>
                     <StyledPrice>{`£${item.price.toFixed(2)}`}</StyledPrice>
-                    <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
+                    {children}
                 </StyledActions>
             </CardDetails> 
         </Card>
@@ -38,19 +38,4 @@ const StyledPrice = styled.div`
 color: ${props => props.theme?.textLighter};
     font-size: 24px;
     font-weight: 300;
-`;
-
-const BasketButton = styled.button`
-    background-color: ${props => props.theme?.success};
-    color: ${props => props.theme?.textLighter};
-    border: none;
-    margin:
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0px;
-    border-radius: 5px;
-
-    &:hover {
-        cursor: pointer;
-    }
 `;
