@@ -14,9 +14,8 @@ const Pay = total => {
 }
 
 export default function Basket() {
-    const [basket] = useContext(BasketContext);
+    const {basket} = useContext(BasketContext);
     const totalPrice = orderTotal(basket).toFixed(2);
-    console.log(basket);
     
     return (
         <>

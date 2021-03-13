@@ -14,8 +14,7 @@ const StyledSection = styled.section`
 
 export default function Shop() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products');
-    // eslint-disable-next-line
-    const [basket, dispatch] = useContext(BasketContext);
+    const {dispatch} = useContext(BasketContext);
     const notyf = useContext(NotyfContext);
 
     function addToBasket(item) {
