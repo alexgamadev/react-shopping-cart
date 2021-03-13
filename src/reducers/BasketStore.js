@@ -15,30 +15,36 @@ function changeQuantity(basket, payload) {
     console.log(payload)
     const {change, id} = payload;
     const itemIndex = basket.findIndex(item => item.id === id);
-    if(itemIndex <= -1) {
-        return basket;
-    } else {
-        return basket.map(item => {
-            if(item.id === id) {
-                return {
+
+    //If item doesn't exist, return
+    if(itemIndex <= -1) return basket;
+
+    //Increase quantity of item
+    return basket.reduce((newBasket, item) => {
+        if(item.id !== id) {
+            newBasket.push(item);
+        } else {
+            const newQuantity = item.quantity + change;
+
+            if(newQuantity > 0) {
+                newBasket.push({
                     ...item,
-                    quantity: item.quantity + change
-                };
-            } else {
-                return item;
+                    quantity: newQuantity,
+                });
             }
-        });
-    }
+        }
+
+        return newBasket;
+    }, []);
 }
 
 function addToBasket(basket, newItem) {
     const itemIndex = basket.findIndex(item => item.id === newItem.id);
-    if(itemIndex > -1) {
-        changeQuantity(basket, {change: 1, id:itemIndex})
-    } else {
-        newItem.quantity = 1;
-        return [...basket, newItem]; 
-    }
+
+    if(itemIndex > -1) changeQuantity(basket, {change: 1, id:itemIndex})
+
+    newItem.quantity = 1;
+    return [...basket, newItem]; 
 }
 
 export const BasketContext = React.createContext();
