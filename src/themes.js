@@ -2,8 +2,8 @@ const themes = {
     light: {
         textDarker: '#000',
         text: '#121212',
-        textLighter: '#212121',
-        backgroundDarker: '#eee',
+        textLighter: '#343434',
+        backgroundDarker: '#aaa',
         background: '#fafafa',
         backgroundLighter: '#fff',
         primaryDarker: '#042240',
