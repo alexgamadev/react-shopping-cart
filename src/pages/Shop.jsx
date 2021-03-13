@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import ShopCard from '../components/ShopCard';
+import SearchBar from '../components/SearchBar';
 import Spinner from '../components/Spinner';
 import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
@@ -26,6 +27,7 @@ export default function Shop() {
     return (
         <>
             <Navbar pageTitle={"Shop"}/>
+            <SearchBar />
             {data ? 
             (  
                 <StyledSection>
