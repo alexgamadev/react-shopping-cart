@@ -7,6 +7,8 @@ function basketReducer(basket, action) {
             return addToBasket(basket, payload.item);
         case 'adjust-quantity':
             return changeQuantity(basket, payload);
+        case 'clear-basket':
+            return [];
         default: return basket;
     }
 }
