@@ -9,12 +9,13 @@ const orderTotal = (items) => {
     return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
 }
 
-const Pay = total => {
+const Pay = (total, dispatch) => {
     alert(`Paid £${total} for items`);
+    dispatch({type: 'clear-basket'});
 }
 
 export default function Basket() {
-    const {basket} = useContext(BasketContext);
+    const {basket, dispatch} = useContext(BasketContext);
     const totalPrice = orderTotal(basket).toFixed(2);
     
     return (
@@ -32,7 +33,7 @@ export default function Basket() {
                         )})}
                     </BasketList>
                     <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
-                    <BuyButton onClick={() => Pay(totalPrice)}>Pay Now</BuyButton>
+                    <BuyButton onClick={() => Pay(totalPrice, dispatch)}>Pay Now</BuyButton>
                 </>
             ) : (
                 <h2>Basket empty</h2>
