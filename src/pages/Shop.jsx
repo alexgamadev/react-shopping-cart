@@ -8,15 +8,22 @@ import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
 import { BasketContext } from '../reducers/BasketStore'
 import NotyfContext from '../context/NotyfContext';
+import { useLocation, useHistory } from 'react-router';
 
 const StyledSection = styled.section`
     margin: 20px;
 `;
 
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
+
 export default function Shop() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products');
     const {dispatch} = useContext(BasketContext);
     const notyf = useContext(NotyfContext);
+    const history = useHistory();
+    const urlQuery = useQuery();
 
     function addToBasket(item) {
         dispatch({type: 'add-to-basket', payload: {item: item}})
@@ -24,20 +31,40 @@ export default function Shop() {
         notyf.success('Added to basket!');
     }
 
+    function search(input) {
+        console.log(input);
+        const searchQuery = input.length > 0 ? `?search=${input}` : '';
+        history.push(`/shop${searchQuery}`);
+    }
+
+
+    function displayItems(item) {
+        const searchTerm = urlQuery.get('search');
+        if(searchTerm !== null) {
+            if(item.title.toUpperCase().includes(searchTerm.toUpperCase()) ||
+             item.category.toUpperCase().includes(searchTerm.toUpperCase())){
+                return (<ShopCard key={item.id} item={item}>
+                        <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
+                        </ShopCard>
+                )
+            }
+        } else {
+            return (<ShopCard key={item.id} item={item}>
+                <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
+                </ShopCard>)
+        }
+    }
+
     return (
         <>
             <Navbar pageTitle={"Shop"}/>
-            <SearchBar />
+            <SearchBar searchFunc={search}/>
             {data ? 
             (  
                 <StyledSection>
                     {data && 
                         <ResponsiveGrid>
-                            {data?.map((item) => {
-                                return (<ShopCard key={item.id} item={item}>
-                                    <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
-                                    </ShopCard>
-                            )})}
+                            {data?.map(displayItems)}
                         </ResponsiveGrid>                
                     }   
                 </StyledSection>

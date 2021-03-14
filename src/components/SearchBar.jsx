@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components';
-import {Search} from '@styled-icons/boxicons-regular/Search'
+import {Search} from '@styled-icons/boxicons-regular/Search';
 
 export default function SearchBar(props) {
     const {searchFunc} = props;
