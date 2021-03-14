@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components';
 import {Search} from '@styled-icons/boxicons-regular/Search'
 
-export default function SearchBar() {
+export default function SearchBar(props) {
+    const {searchFunc} = props;
+    const searchInput = useRef(null);
+
+    function search(e) {
+        e.preventDefault();
+        if(searchFunc) searchFunc(searchInput.current.value);
+    }
+
     return (
-        <Wrapper>
-            <StyledSearch type="text" />
-            <SearchIcon size={35} role={"img"}/>
-        </Wrapper>
+        <FormWrapper onSubmit={search}>
+            <StyledSearch type="text" ref={searchInput}/>
+            <SearchIcon size={35} role={"img"} onClick={search}/>
+        </FormWrapper>
     )
 }
 
-const Wrapper = styled.div`
+const FormWrapper = styled.form`
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-top: 10px;
 `;
 const StyledSearch = styled.input`
@@ -25,6 +32,12 @@ const StyledSearch = styled.input`
     background-color: ${props => props.theme.backgroundLighter};
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
+
+    &:focus, &:active {
+        border-radius: 5px;
+        border: 1px solid #888;
+        outline: none;
+    }
 `;
 
 const SearchIcon = styled(Search)`
