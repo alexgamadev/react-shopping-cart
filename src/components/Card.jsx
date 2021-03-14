@@ -61,7 +61,7 @@ const CardContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-    object-fit: contain;
+    object-fit: fill;
     max-width: 100%;
     max-height: 100%;
 `;
