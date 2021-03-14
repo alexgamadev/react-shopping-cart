@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { ShoppingBasket as BasketIcon } from '@styled-icons/material-sharp/ShoppingBasket';
+import { Cart as BasketIcon } from '@styled-icons/boxicons-regular/Cart';
 import { MenuAltLeft as MenuIcon } from '@styled-icons/boxicons-regular/MenuAltLeft';
 import { Link } from 'react-router-dom';
 import Icon from './Icon';
@@ -55,7 +55,7 @@ const StyledMenuIcon = styled(MenuIcon)`
 const StyledBasketIcon = styled(BasketIcon)`
     ${Icon}
     color: ${props => props.theme.text};
-    
+    border-radius: 0px;
     &:active, &:hover {
         background-color: ${props => props.theme.backgroundLighter};
     }

@@ -64,6 +64,6 @@ const BasketButton = styled.button`
     }
     &:active {
         cursor: pointer;
-        background-color: ${props => `${props.theme?.success}88`};
+        background-color: ${props => props.theme?.success}88;
     }
 `;

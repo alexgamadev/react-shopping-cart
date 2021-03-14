@@ -14,19 +14,26 @@ export default function SearchBar() {
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 `;
 const StyledSearch = styled.input`
     padding: 7px 10px;
     border-radius: 5px;
-    width: 60%;
+    width: 70%;
     border: 1px solid ${props => props.theme.backgroundDarker};
     background-color: ${props => props.theme.backgroundLighter};
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
 `;
 
 const SearchIcon = styled(Search)`
     color: ${props => props.theme.textLighter};
     border-radius: 5px;
 
+    &:hover {
+        cursor: pointer;
+    }
     &:active {
         cursor: pointer;
         background-color: ${props => `${props.theme?.textLighter}11`};
