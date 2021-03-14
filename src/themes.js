@@ -11,6 +11,7 @@ const themes = {
         primaryLighter: '#a2cffb',
         shadow: '#aaa',
         success: '#6be858',
+        error: '#d45757',
     },
     dark: {
         textDarker: '#fff',
@@ -24,6 +25,7 @@ const themes = {
         primaryLighter: '#34608c',
         shadow: 'black',
         success: '#186a0b',
+        error: '#d45757',
     },
 }
 
