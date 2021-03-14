@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function Card(props) {
-    const {children, theme} = props;
+export function Card(props) {
+    const {children, theme, className} = props;
     return (
-        <CardContainer theme={theme} radius={0}>
+        <CardContainer className={className} theme={theme} radius={0}>
             {children}
         </CardContainer>
     );
 }
 
 export function CardMedia(props) {
-    const {children} = props;
+    const {children, width, className} = props;
     return (
-        <StyledMedia>
+        <StyledMedia className={className} width={width}>
             {children}
         </StyledMedia>
     );
@@ -24,6 +24,13 @@ export function CardImage(props) {
     return (
         <StyledImage src={imageSrc}/>
     );
+}
+
+export function MediaOverlay(props) {
+    const {children, className} = props;
+    return (
+        <StyledMediaOverlay className={className}>{children}</StyledMediaOverlay>
+    )
 }
 
 export function CardDetails(props) {
@@ -48,9 +55,6 @@ const CardContainer = styled.div`
     display: flex;
     background: ${props => props.theme?.backgroundLighter ?? 'white'};
     color: ${props => props.theme?.text ?? 'black'};
-    max-width: 600px;
-    min-width: 300px;
-    height: 150px;
     box-shadow: 0px 2px 5px -1px ${props => props.theme.shadow};
     border-radius: ${props => props.radius}px;
     overflow: hidden;
@@ -63,13 +67,17 @@ const StyledImage = styled.img`
 `;
 
 const StyledMedia = styled.div`
+    position:relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 33%;
-    padding: 10px;
+    width: ${props => props.width ?? '50%'};
     flex-shrink: 0;
     border-right: 1px solid ${props => props.theme?.backgroundDarker};
+`;
+
+const StyledMediaOverlay = styled.div`
+    position: absolute;
 `;
 
 const StyledDetails = styled.div`
