@@ -6,24 +6,44 @@ import ResponsiveGrid from '../components/ResponsiveGrid';
 import useFetchAPI from '../hooks/useFetchAPI';
 import {Link} from 'react-router-dom';
 
+const categoryImages = [
+    {
+        category: 'electronics',
+        src: 'https://images.unsplash.com/photo-1572114718898-c32270a1b989?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    },
+    {
+        category: 'women clothing',
+        src: 'https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    },
+    {
+        category: 'jewelery',
+        src: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    },
+    {
+        category: 'men clothing',
+        src: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    },
+
+]
+
 export default function Home() {
     const [data] = useFetchAPI('https://fakestoreapi.com/products/categories');
-    console.log(data);
     
     return (
         <>
             <Navbar pageTitle={"Home"}/>
             <StyledSection>
-                <h1>Item categories</h1>
+                <h1>Categories</h1>
                 <ResponsiveGrid>
                     {data && (<>
-                        {data.map(category => {
+                        {data.map((category, index) => {
+                            const categoryData = categoryImages.find((obj) => obj.category === category);
                             return (
-                                <Link to={`/shop?category=${category}`}>
+                                <Link to={`/shop?category=${category}`} key={index}>
                                     <StyledCard>
                                         <CardMedia width={'100%'}>
                                             <ImageDimmer />
-                                            <CardImage imageSrc='https://www.rd.com/wp-content/uploads/2020/04/GettyImages-694542042-e1586274805503.jpg'/>
+                                            <CardImage imageSrc={categoryData.src}/>
                                             <CategoryTitle>{category}</CategoryTitle>
                                         </CardMedia>
                                     </StyledCard>
