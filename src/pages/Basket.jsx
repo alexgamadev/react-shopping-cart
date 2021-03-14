@@ -33,6 +33,7 @@ export default function Basket() {
                         )})}
                     </BasketList>
                     <OrderTotal>Order Total: £{totalPrice}</OrderTotal>
+                    <ClearButton onClick={() => dispatch({type: 'clear-basket'})}>Clear Basket</ClearButton>
                     <BuyButton onClick={() => Pay(totalPrice, dispatch)}>Pay Now</BuyButton>
                 </>
             ) : (
@@ -66,6 +67,18 @@ const BasketList = styled.ul`
 
 const OrderTotal = styled.h2`
     font-weight: 400;
+`;
+
+const ClearButton = styled.a`
+    background-color: ${props => props.theme.error};
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 40px;
+
+    &:hover, :active {
+        cursor: pointer;
+    }
 `;
 
 const BuyButton = styled.a`
