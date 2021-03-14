@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import { BasketContext } from '../reducers/BasketStore';
@@ -6,7 +6,7 @@ import ShopCard from '../components/ShopCard';
 import QuantityDisplay from '../components/QuantityDisplay';
 
 const orderTotal = (items) => {
-    return items.reduce((prev, item) => prev += (item.price * item.quantity), 0);
+    return items?.reduce((prev, item) => prev += (item.price * item.quantity), 0);
 }
 
 const Pay = (total, dispatch) => {
@@ -16,13 +16,17 @@ const Pay = (total, dispatch) => {
 
 export default function Basket() {
     const {basket, dispatch} = useContext(BasketContext);
-    const totalPrice = orderTotal(basket).toFixed(2);
+    const totalPrice = orderTotal(basket)?.toFixed(2);
+
+    useEffect(() => {
+        dispatch({type: 'fetch-basket-storage'});
+    }, []);
     
     return (
         <>
             <Navbar pageTitle={"Basket"}/>
             <Wrapper>
-            {basket.length > 0 ? (
+            {basket?.length > 0 ? (
                 <>
                     <BasketList>
                         {basket.map(item => {
