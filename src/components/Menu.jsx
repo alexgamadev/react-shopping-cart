@@ -33,6 +33,7 @@ const StyledMenu = styled(animated.div)`
     left: 0px;
     height: 100vh;
     width: 80vw;
+    z-index:9;
     background-color: ${props => props.theme.primary};
     transform: ${props => props.$menuOpen ? 'translateX(0)' : 'translateX(-100vw)'};
 `;
