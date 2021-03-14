@@ -26,6 +26,7 @@ export default function Shop() {
     const urlQuery = useQuery();
 
     function addToBasket(item) {
+        notyf.dismissAll();
         dispatch({type: 'add-to-basket', payload: {item: item}})
         window.localStorage.setItem('basket', JSON.stringify(item));
         notyf.success('Added to basket!');
@@ -40,11 +41,7 @@ export default function Shop() {
         setSearchParams(location.search);
     }, [location.search]);
 
-    useEffect(() => {
-        setItems(data?.flatMap(getItems));
-    }, [data, searchParams]);
-
-    function getItems(item) {
+    const getItems = (item) => {
         const searchTerm = urlQuery.get('search');
         const categoryTerm = urlQuery.get('category');
 
@@ -62,7 +59,11 @@ export default function Shop() {
         }
 
         return [];
-    }
+    };
+
+    useEffect(() => {
+        setItems(data?.flatMap(getItems));
+    }, [data, searchParams]);
 
     return (
         <>
@@ -97,7 +98,7 @@ const BasketButton = styled.button`
     background-color: ${props => props.theme?.success};
     color: ${props => props.theme?.textLighter};
     border: none;
-    margin:
+    margin:0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     letter-spacing: 0px;
