@@ -19,7 +19,7 @@ export default function Home() {
                     {data && (<>
                         {data.map(category => {
                             return (
-                                <Link to={`/shop?search=${category}`}>
+                                <Link to={`/shop?category=${category}`}>
                                     <StyledCard>
                                         <CardMedia width={'100%'}>
                                             <ImageDimmer />
@@ -59,10 +59,5 @@ const StyledSection = styled.section`
 const StyledCard = styled(Card)`
     max-width: 600px;
     min-width: 200px;
-    min-height: 300px;
     max-height: 600px;
 `;
-
-function categoryCard() {
-
-}

@@ -39,10 +39,19 @@ export default function Shop() {
 
 
     function displayItems(item) {
+        console.log(urlQuery);
         const searchTerm = urlQuery.get('search');
-        if(searchTerm !== null) {
+        const categoryTerm = urlQuery.get('category');
+        if(searchTerm !== null){
             if(item.title.toUpperCase().includes(searchTerm.toUpperCase()) ||
              item.category.toUpperCase().includes(searchTerm.toUpperCase())){
+                return (<ShopCard key={item.id} item={item}>
+                        <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
+                        </ShopCard>
+                )
+            }
+        } else if(categoryTerm !== null){
+            if(item.category === categoryTerm){
                 return (<ShopCard key={item.id} item={item}>
                         <BasketButton onClick={() => addToBasket(item)}>Add To Basket</BasketButton>
                         </ShopCard>
