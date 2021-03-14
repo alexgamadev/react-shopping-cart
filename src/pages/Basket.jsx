@@ -20,6 +20,7 @@ export default function Basket() {
 
     useEffect(() => {
         dispatch({type: 'fetch-basket-storage'});
+    // eslint-disable-next-line
     }, []);
     
     return (
@@ -52,7 +53,7 @@ export default function Basket() {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     flex-grow: 1;
 `;
@@ -61,6 +62,7 @@ const BasketList = styled.ul`
     display: flex;
     gap: 10px;
     flex-direction: column;
+    align-items: center;
     max-width: 90%;
     min-width: 60%;
     list-style: none;
