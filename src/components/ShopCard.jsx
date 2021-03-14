@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card, {CardDetails, CardImage, CardMedia, CardTitle} from '../components/Card';
+import {Card, CardDetails, CardImage, CardMedia, CardTitle} from '../components/Card';
 
 export default function ShopCard(props) {
     const { item, children } = props;
 
     return (
-        <Card>
-            <CardMedia>
+        <StyledCard>
+            <StyledCardMedia width={'33%'}>
                 <CardImage imageSrc={item.image}/>
-            </CardMedia>
+            </StyledCardMedia>
             <CardDetails>
                 <CardTitle text={item.title} maxLines={2} />
                 <StyledDescription>{item.category}</StyledDescription>
@@ -18,9 +18,19 @@ export default function ShopCard(props) {
                     {children}
                 </StyledActions>
             </CardDetails> 
-        </Card>
+        </StyledCard>
     )
 }
+
+const StyledCardMedia = styled(CardMedia)`
+    padding: 10px;
+`;
+
+const StyledCard = styled(Card)`
+    max-width: 600px;
+    min-width: 300px;
+    height: 150px;
+`;
 
 const StyledDescription = styled.div`
     color: ${props => props.theme?.textLighter};
